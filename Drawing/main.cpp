@@ -1,5 +1,5 @@
 //================================================
-// YOUR NAME GOES HERE <-----------------  
+// Kyler Seal
 //================================================
 #include <iostream>
 #include <fstream>
@@ -10,7 +10,6 @@ using namespace std;
 #include "SettingsUI.h"
 #include "DrawingUI.h"
 using namespace sf;
-
 // Finish this code. Other than where it has comments telling you to 
 // add code, you shouldn't need to add any logic to main to satisfy
 // the requirements of this programming assignment
@@ -29,7 +28,13 @@ int main()
 	DrawingUI   drawingUI(Vector2f(200, 50));
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
-
+	fstream infile;
+	infile.open("shapes.bin", ios::in | ios::binary);
+	if (infile)
+	{
+		settingsMgr.readTheFile(infile);
+		shapeMgr.readTheFile(infile);
+	}
 	while (window.isOpen()) 
 	{
 		Event event;
@@ -39,6 +44,11 @@ int main()
 			{
 				window.close();
 				// ****** Add code here to write all data to shapes file
+				fstream ofile;
+				ofile.open("shapes.bin", ios::out | ios::binary);
+				settingsMgr.writeToFile(ofile);
+				shapeMgr.writeToFile(ofile);
+				ofile.close();
 			}
 			else if (event.type == Event::MouseButtonReleased)
 			{
