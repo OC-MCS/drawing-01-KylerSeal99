@@ -10,21 +10,22 @@ using namespace sf;
 class SettingsUI
 {
 private:
-	const int RADIUS = 20;
-	CircleShape redBtn;
-	CircleShape greenBtn;
-	CircleShape blueBtn;
-	CircleShape circleBtn;
-	RectangleShape sqrBtn;
-	RectangleShape canvas;
-	SettingsMgr *UIMgr;
+	const int RADIUS = 20; // Radius for the buttons
+	CircleShape redBtn; // Red Button
+	CircleShape greenBtn; // Green Button
+	CircleShape blueBtn; // Blue Button
+	CircleShape circleBtn; // Circle Button
+	RectangleShape sqrBtn; //Square Button
+	SettingsMgr *UIMgr; // pointer to the settings UI Manager
 
 public:
-	SettingsUI(SettingsMgr *mgr)
+	SettingsUI(SettingsMgr *mgr) //Constructor
 	{
 		UIMgr = mgr;
 	}
-	void handleMouseUp(Vector2f mouse)
+
+	// void handleMouseUp(Vector2f mouse) Detects if the mouse is hitting any of the buttons
+	void handleMouseUp(Vector2f mouse) 
 	{
 		if (redBtn.getGlobalBounds().contains(mouse))
 		{
@@ -50,7 +51,8 @@ public:
 			
 	}
 
-	void draw(RenderWindow& win)
+	// void draw(RenderWindow& win) Draws the UI (buttons, canvas)
+	void draw(RenderWindow& win) 
 	{
 		Font font;
 		if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
@@ -139,6 +141,8 @@ public:
 			circleBtn.setFillColor(Color::Transparent);
 		}
 	}
+
+	//void die(string msg) Exits the program 
 	void die(string msg)
 	{
 		cout << msg << endl;

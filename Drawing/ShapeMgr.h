@@ -11,13 +11,14 @@ using namespace sf;
 class ShapeMgr
 {
 private:
-	vector<DrawingShape*> shapeDrawn;
+	vector<DrawingShape*> shapeDrawn; 
 public:
 	ShapeMgr()
 	{
 		
 	}
 
+	// Adds what the user draws to the current shapes
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		if (whichShape == ShapeEnum::CIRCLE)
@@ -32,11 +33,13 @@ public:
 		}
 	}
 
+	// Returns the vector shapes
 	const vector<DrawingShape*>& getShapes()
 	{
 		return shapeDrawn;
 	}
 
+	// Takes a file to read the vector of shapes
 	void readTheFile(fstream& file) 
 	{
 		SaveShape shapein;
@@ -46,6 +49,7 @@ public:
 		}
 	}
 
+	// Takes a file to write the vector of shapes to
 	void writeToFile(fstream& file) 
 	{
 		for (int i = 0; i < shapeDrawn.size(); i++) 

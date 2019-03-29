@@ -11,8 +11,8 @@ enum ShapeEnum { CIRCLE, SQUARE };
 class SettingsMgr
 {
 private:
-	Color currentColor;
-	ShapeEnum currentShape;
+	Color currentColor; // Stores the current selected color
+	ShapeEnum currentShape; // Stores the current selected Shape
 public:
 	// Constructor
 	SettingsMgr(Color startingColor, ShapeEnum startingShape )
@@ -21,26 +21,31 @@ public:
 		currentShape = startingShape;
 	}
 
+	// Returns the current color
 	Color getCurColor()
 	{
 		return currentColor;  
 	}
 
+	//Sets the current Color
 	void setCurrentColor(Color colorPassed)
 	{
 		currentColor = colorPassed;
 	}
 
+	// Returns the current shape
 	ShapeEnum getCurShape()
 	{
 		return currentShape; 
 	}
 
+	// Set the current shape
 	void setCurShape(ShapeEnum shapePassed)
 	{
 		currentShape = shapePassed;
 	}
 
+	// Reads the binary file to recall saved data
 	void readTheFile(fstream& file) 
 	{
 		unsigned int savedColor;
@@ -49,6 +54,7 @@ public:
 		currentColor = Color(savedColor);
 	}
 
+	// Saves the new data to the file
 	void writeToFile(fstream& file) 
 	{
 		unsigned int savedColor = currentColor.toInteger();

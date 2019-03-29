@@ -10,8 +10,9 @@ using namespace sf;
 class DrawingUI
 {
 private:
-	RectangleShape canvas;
+	RectangleShape canvas; //Canvas for drawing area
 public:
+	// constructor
 	DrawingUI(Vector2f p)
 	{
 		canvas.setPosition(p);
@@ -20,6 +21,7 @@ public:
 		canvas.setSize(Vector2f(550, 500));
 	}
 
+	// Draws the canvas and previous shapes that were drawn on canvas
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
 		win.draw(canvas);
@@ -30,6 +32,7 @@ public:
 		}
 	}
 	
+	// Checks to see if mouse is in the canvas. Returns True or False
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
 		return canvas.getGlobalBounds().contains(mousePos) && canvas.getGlobalBounds().contains(Vector2f(mousePos.x + 10, mousePos.y + 10));
